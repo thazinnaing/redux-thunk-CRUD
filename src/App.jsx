@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addingProducts } from "./actions";
 import ProductsList from "./components/productLists";
+import "./App.css"
 
 
 const PRODUCTS_URL="https://api.escuelajs.co/api/v1/products"
@@ -24,7 +25,13 @@ const App=()=>{
     }, [])
 
   return(
-    <ProductsList />
+    <>
+    <h1 className="header">My Category</h1>
+    <div className="container">
+      <ProductsList />
+    </div>
+    </>
+    
   )
 }
 

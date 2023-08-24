@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
+
   
 }.header{
   text-align: center;
@@ -25,13 +26,54 @@ img{
   width: 290px;
   height: 300px;
 }
-.price,h2,h5{
+.price,h3,h5{
   padding: 0 5px;
 }
 .price{
   color: gray;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.formSection{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+}
+.addForm{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+label{
+  font-size: 18px;
+}
+input{
+  height: 50px;
+  padding: 10px;
+}
+textarea{
+  height: 100px;
+  padding: 10px;
+}
+.add-button{
+  height: 40px;
+  background-color: lightcoral;
+  border: none;
+  color: black;
+  font-size: 15px;
+}
+.add-button:hover{
+  background-color: rgb(231, 81, 81);
+}
+
 @media screen and (max-width: 640px) {
   .product-item{
     flex-basis: 90%;
@@ -39,5 +81,9 @@ img{
   img{
     width: 100%;
   }
+  .formSection{
+    width: 90%;
+  }
+
 }
 

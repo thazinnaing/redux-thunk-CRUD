@@ -4,17 +4,21 @@ import ProductItem from "./productItem";
 const ProductsList=()=>{
 
     const products= useSelector(state=>state?.products);
-
-    // const sortProducts=[...products].sort((a,b)=> a.id - b.id)
+    console.log("productslists", products);
 
     const productsListContent = products?.map((product=>{
             return <ProductItem key={product.id} product={product} />
         }))
     
     return(
-        <div className="product-container">
-            {productsListContent}
-        </div>
+        <>
+            <h1 className="header">My Category</h1>
+            <div className="container">
+                <div className="product-container">
+                    {productsListContent}
+                </div>
+            </div>
+        </>
     )
 }
 

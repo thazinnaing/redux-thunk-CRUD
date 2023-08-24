@@ -16,7 +16,7 @@ const Form =()=>{
     const [post, setPost]=useState(initialState);
     console.log("post", post);
 
-    const addAvailable=[post?.title,post?.description,post?.imageUrl,post?.price].every(Boolean);
+    const addAvailable=[post?.title,post?.description,post?.images,post?.price].every(Boolean);
     console.log("addAvailable", addAvailable)
 
     const onChangedInput=(e)=>{
@@ -26,7 +26,9 @@ const Form =()=>{
 
     const onChangeImage=(e)=>{
         const url=e.target.value;
-        setPost({...post, images: [...images, url]})
+        setPost(prev=>{
+            return {...prev, images: [...prev?.images, url]}
+        })
     }
 
     const onClickAddPost=(e)=>{

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addNewProduct } from "../thunkFunctions";
-
+import { useNavigate } from "react-router-dom";
 
 const initialState={
     title: "",
@@ -12,6 +12,7 @@ const initialState={
 
 const Form =()=>{
     const dispatch=useDispatch();
+    const navigate=useNavigate();
 
     const [post, setPost]=useState(initialState);
     console.log("post", post);
@@ -21,27 +22,29 @@ const Form =()=>{
 
     const onChangedInput=(e)=>{
         const {name, value}=e.target;
-        setPost({...post, [name]:value})
+        setPost(prev=>{
+            return{...post, [name]: value}
+        })
     }
 
     const onChangeImage=(e)=>{
         const url=e.target.value;
         setPost(prev=>{
-            return {...prev, images: [...prev?.images, url]}
+            return {...prev, images: [post?.images[0],url]}
         })
     }
 
     const onClickAddPost=(e)=>{
         e.preventDefault();
         dispatch(addNewProduct(post))
-
-        
         setPost(initialState); 
+        navigate("/list");
 
     }
 
     return(
-        <div className="form-container">
+        <div className="container">
+            <div className="form-container">
             <section className="formSection">
             <h2>Add new product</h2>
             <form className="addForm">
@@ -70,7 +73,7 @@ const Form =()=>{
                 type="text"
                 name="imageUrl"
                 id="imageUrl"
-                value = {post?.imageUrl}
+                value = {post?.images}
                 required
                 onChange={onChangeImage}
                 />
@@ -99,6 +102,9 @@ const Form =()=>{
         </section>
 
         </div>
+
+        </div>
+        
         
     )
 }

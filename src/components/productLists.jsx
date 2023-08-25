@@ -7,7 +7,7 @@ const ProductsList=()=>{
     console.log("productslists", products);
 
     const productsListContent = products?.map((product=>{
-            return <ProductItem key={product.id} product={product} />
+            return <ProductItem key={product.newId} product={product} />
         }))
     
     return(
